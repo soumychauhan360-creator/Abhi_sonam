@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Abhi ❤️ Sonam | Eternal Love Story - Phone Portrait</title>
+  <title>Abhi ❤️ Sonam | Eternal Love Pulse – Every Beat Counts</title>
   <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- html2canvas for image download -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <!-- canvas-confetti for celebratory effects -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
   <style>
     * {
@@ -20,7 +18,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 10% 20%, #1e0b2c, #0e0517);
+      background: radial-gradient(circle at 30% 0%, #160725, #090211);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -32,9 +30,9 @@
     }
 
     /* floating hearts background */
-    .heart-floating {
+    .floating-bg {
       position: fixed;
-      bottom: 0;
+      top: 0;
       left: 0;
       width: 100%;
       height: 100%;
@@ -43,115 +41,121 @@
       overflow: hidden;
     }
 
-    /* main card container - perfect for phone portrait */
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.9; }
+      100% { transform: translateY(-15vh) scale(1.1); opacity: 0; }
+    }
+
+    /* main glass card */
     .love-card {
       position: relative;
       z-index: 10;
-      max-width: 450px;
+      max-width: 500px;
       width: 100%;
       margin: 0 auto;
-      background: rgba(20, 10, 35, 0.75);
-      backdrop-filter: blur(16px);
-      border-radius: 2rem;
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 140, 170, 0.3);
-      padding: 1.5rem 1.2rem 2rem;
+      background: rgba(15, 6, 28, 0.72);
+      backdrop-filter: blur(20px);
+      border-radius: 2.5rem;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), 0 0 0 1.5px rgba(255, 100, 140, 0.6), 0 0 30px rgba(255, 70, 110, 0.4);
+      padding: 1.5rem 1.2rem 1.8rem;
       transition: all 0.3s ease;
-      border: 1px solid rgba(255, 140, 170, 0.4);
+      border: 1px solid rgba(255, 180, 200, 0.6);
+      animation: cardPulse 3s infinite alternate;
     }
 
-    /* header romantic glow */
-    .couple-title {
-      text-align: center;
-      margin-bottom: 1.2rem;
+    @keyframes cardPulse {
+      0% { box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,120,150,0.5); }
+      100% { box-shadow: 0 25px 55px rgba(255,70,110,0.3), 0 0 0 2px rgba(255,150,180,0.8), 0 0 25px #ff6080; }
     }
 
     .glow-text {
       font-size: 2.2rem;
       font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      background: linear-gradient(135deg, #FFB7C5, #FF6A88, #FFD966);
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFC0D0, #FF6A88, #FFB85C, #FFD966);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      text-shadow: 0 0 8px rgba(255, 105, 130, 0.4);
+      text-shadow: 0 0 15px rgba(255, 80, 120, 0.5);
       letter-spacing: 1px;
     }
 
     .heart-divider {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin: 0.2rem 0;
-      color: #ff7b9c;
-    }
-
-    .subhead {
-      font-size: 0.75rem;
-      color: #f8c8dc;
-      background: rgba(255, 255, 255, 0.08);
+      animation: heartbeatRomance 1.5s infinite;
       display: inline-block;
-      padding: 0.2rem 1rem;
-      border-radius: 50px;
-      font-weight: 500;
+      width: 100%;
     }
 
-    /* stats grid - compact for mobile */
-    .stats-grid {
-      display: flex;
-      flex-wrap: wrap;
+    @keyframes heartbeatRomance {
+      0%, 100% { transform: scale(1); color: #ff7b9c; text-shadow: 0 0 2px #ff99bb; }
+      50% { transform: scale(1.12); color: #ff3b6f; text-shadow: 0 0 12px #ff4d6d; }
+    }
+
+    /* Stats grid - for days, months, anniversary */
+    .stats-main-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
       gap: 0.8rem;
-      justify-content: center;
-      margin: 1.2rem 0;
+      margin: 1rem 0;
     }
 
     .stat-card {
-      background: rgba(0, 0, 0, 0.55);
-      border-radius: 1.2rem;
-      padding: 0.7rem 0.8rem;
-      min-width: 100px;
-      flex: 1;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 1.5rem;
+      padding: 0.8rem 0.3rem;
       text-align: center;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 130, 160, 0.5);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 130, 170, 0.8);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      background: rgba(25, 10, 45, 0.85);
+      border-color: #ff99bb;
     }
 
     .stat-number {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 800;
-      color: #ffb3c6;
-      font-family: monospace;
-      letter-spacing: 1px;
+      font-family: 'Inter', monospace;
+      color: #FFC0D0;
+      text-shadow: 0 0 4px #ff4d6d;
+      line-height: 1.2;
     }
 
     .stat-label {
       font-size: 0.65rem;
       text-transform: uppercase;
-      color: #ffcfdf;
-      font-weight: 600;
-      margin-top: 4px;
+      font-weight: 700;
+      color: #ffd4e2;
+      margin-top: 0.3rem;
     }
 
-    /* double profile section - column for mobile but side by side if space */
+    /* Profile section */
     .profiles {
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
-      justify-content: center;
-      margin: 1.2rem 0;
+      margin: 1rem 0;
     }
 
     .profile {
       flex: 1;
-      min-width: 140px;
-      background: rgba(15, 8, 25, 0.7);
-      border-radius: 1.5rem;
-      padding: 1rem;
+      background: rgba(10, 4, 22, 0.8);
+      border-radius: 1.8rem;
+      padding: 0.9rem;
       text-align: center;
-      border: 1px solid rgba(255, 120, 150, 0.4);
+      border: 1px solid #ff8dab;
     }
 
     .avatar {
       width: 70px;
       height: 70px;
-      background: linear-gradient(145deg, #ff708d, #d43f68);
+      background: radial-gradient(circle at 30% 30%, #ff708d, #b91c4a);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -160,511 +164,551 @@
       font-size: 2rem;
       font-weight: bold;
       color: white;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      border: 2px solid #ffc0d0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 0 3px #ffbfcf;
     }
 
     .profile h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.2rem;
       color: #ffd9e4;
     }
 
     .bio {
-      margin-top: 0.4rem;
       font-size: 0.7rem;
-      color: #e7bfd0;
+      color: #f2c7da;
     }
 
-    .dob-badge {
-      background: rgba(255, 80, 110, 0.25);
-      border-radius: 30px;
-      padding: 3px 10px;
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 0.7rem;
+    /* 🌟🌟🌟 LIVE COSMIC SECTION - NOW IN COLUMN LAYOUT FOR PERFECT VISIBILITY 🌟🌟🌟 */
+    .live-cosmic-section {
+      background: linear-gradient(145deg, #2f124970, #140a2470);
+      border-radius: 2rem;
+      padding: 1.2rem 0.9rem;
+      margin: 1rem 0;
+      border: 1px solid #ff99bb;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
     }
 
-    .zodiac {
-      margin-top: 5px;
-      font-size: 0.65rem;
-      font-style: italic;
-    }
-
-    /* journey timeline */
-    .journey {
-      margin: 1.2rem 0;
-      background: rgba(0, 0, 0, 0.45);
-      border-radius: 1.5rem;
-      padding: 1rem;
+    .live-cosmic-title {
       text-align: center;
-    }
-
-    .journey h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #ffb3c9;
-      margin-bottom: 0.3rem;
-    }
-
-    .milestone-date {
-      font-size: 1rem;
+      font-size: 0.85rem;
       font-weight: bold;
-      color: #FFD966;
+      color: #FFD9E8;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    /* COLUMN LAYOUT: each metric takes full width, stacked vertically */
+    .live-column-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .live-metric-card {
+      background: #00000066;
+      backdrop-filter: blur(8px);
+      border-radius: 1.6rem;
+      padding: 0.9rem 0.6rem;
+      text-align: center;
+      border: 1px solid rgba(255, 165, 190, 0.9);
+      transition: all 0.2s;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .live-metric-card .big-live-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: 'Inter', monospace;
+      background: linear-gradient(135deg, #FFE4A0, #FFB7C5, #FF9AB5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 12px #ff789a;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-bottom: 0.2rem;
+    }
+
+    .live-metric-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #ffecf0;
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .live-metric-label i {
+      font-size: 0.9rem;
+      color: #ffa5c2;
+    }
+
+    /* Journey extra stats */
+    .journey-card {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 1.5rem;
+      padding: 0.8rem;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .sub-stats {
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
     }
 
     .pledge-area {
-      background: rgba(255, 80, 110, 0.12);
-      border-radius: 1.5rem;
+      background: rgba(255, 70, 110, 0.15);
+      border-radius: 1.8rem;
       padding: 1rem;
       text-align: center;
-      margin-top: 1rem;
-      border: 1px dashed #ff99b5;
-    }
-
-    .pledge-text {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #ffe0e8;
-      margin-bottom: 0.6rem;
-    }
-
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.7rem;
-      margin: 0.8rem 0;
+      border: 1px dashed #ff9fbb;
+      margin-top: 0.8rem;
     }
 
     .btn {
-      background: linear-gradient(95deg, #ff4d6d, #b91c44);
+      background: linear-gradient(95deg, #ff3b6f, #b81c4a);
       border: none;
       padding: 8px 18px;
       border-radius: 40px;
       font-weight: bold;
-      font-size: 0.8rem;
       color: white;
       cursor: pointer;
-      transition: transform 0.2s;
-      font-family: inherit;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      transition: transform 0.2s, filter 0.2s;
+      margin: 0 0.3rem;
+      font-size: 0.8rem;
     }
 
     .btn-outline {
       background: transparent;
-      border: 1.5px solid #ff7b9c;
-      color: #ffb7c5;
-      box-shadow: none;
+      border: 1.5px solid #ff8dab;
+      color: #ffc0d0;
     }
 
-    .btn-outline:hover {
-      background: #ff4d6d30;
+    .btn-download {
+      background: linear-gradient(95deg, #6a2c8f, #39175e);
     }
 
     .btn:hover {
       transform: scale(1.02);
-    }
-
-    /* download button special */
-    .btn-download {
-      background: linear-gradient(95deg, #3a86ff, #1a4972);
-      border: none;
-      margin-top: 0.5rem;
+      filter: brightness(1.1);
     }
 
     .quote-message {
-      margin-top: 12px;
-      font-size: 0.8rem;
-      background: #1f132b;
-      padding: 10px;
-      border-radius: 20px;
-      color: #ffcddf;
+      margin-top: 10px;
+      background: #1e1330cc;
+      border-radius: 1.2rem;
+      padding: 8px;
+      font-size: 0.7rem;
+      color: #ffe2ed;
+      backdrop-filter: blur(5px);
     }
 
     footer {
-      margin-top: 1.2rem;
+      font-size: 0.55rem;
+      color: #cfa5c0;
       text-align: center;
-      font-size: 0.6rem;
-      color: #ac88a0;
-      border-top: 1px solid rgba(255, 120, 150, 0.3);
-      padding-top: 12px;
+      margin-top: 1rem;
+      border-top: 1px solid #ff89aa50;
+      padding-top: 10px;
     }
 
-    i {
-      margin-right: 4px;
-    }
-
-    @keyframes fadeSlide {
-      0% { opacity: 0; transform: translateY(15px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    .love-card > * {
-      animation: fadeSlide 0.4s ease-out forwards;
-    }
-
-    /* download notification toast */
     .toast-msg {
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: #2d1b36e6;
-      backdrop-filter: blur(12px);
-      color: #ffd9e4;
-      padding: 8px 18px;
-      border-radius: 40px;
+      background: #1f0c2ce6;
+      backdrop-filter: blur(20px);
+      color: #fff0f5;
+      padding: 8px 20px;
+      border-radius: 60px;
       font-size: 0.8rem;
-      z-index: 1000;
-      border: 1px solid #ff99bb;
+      z-index: 2000;
+      border: 1px solid #ff8dab;
       font-weight: 500;
-      pointer-events: none;
       white-space: nowrap;
+      font-family: monospace;
+    }
+
+    @keyframes gentlePop {
+      0% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.02); color: #FFE89C; text-shadow: 0 0 4px #ff99bb; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .live-update {
+      animation: gentlePop 0.28s ease-out;
     }
   </style>
 </head>
 <body>
 
-<div class="heart-floating" id="heartContainer"></div>
+<div class="floating-bg" id="floatingHearts"></div>
 
-<!-- main card wrapper for screenshot -->
 <div id="captureArea" class="love-card">
-  <div class="couple-title">
+  <div style="text-align: center;">
     <div class="glow-text">ABHI ✦ SONAM</div>
-    <div class="heart-divider">
-      <i class="fas fa-heart"></i> <i class="fas fa-infinity"></i> <i class="fas fa-heart"></i>
-    </div>
-    <div class="subhead">
-      <i class="fas fa-calendar-alt"></i> 26th January 2023 — Forever & Beyond
+    <div class="heart-divider"><i class="fas fa-heart"></i> ∞ <i class="fas fa-heart"></i></div>
+    <div style="font-size: 0.7rem; background: rgba(255,200,220,0.2); display: inline-block; padding: 0.2rem 1rem; border-radius: 30px;">
+      <i class="fas fa-calendar-alt"></i> 26th January 2023 — <span id="liveDateToday"></span>
     </div>
   </div>
 
-  <!-- Dynamic Stats: FULLY AUTOMATED via JS (days, months, anniversary) -->
-  <div class="stats-grid" id="statsGrid">
+  <!-- PRIMARY STATS (Days, Months, Countdown) -->
+  <div class="stats-main-grid">
     <div class="stat-card">
-      <div class="stat-number" id="totalDays">--</div>
-      <div class="stat-label"><i class="fas fa-clock"></i> Days Together</div>
+      <div class="stat-number" id="totalDaysNum">--</div>
+      <div class="stat-label"><i class="fas fa-sun"></i> DAYS TOGETHER</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number" id="totalMonths">--</div>
-      <div class="stat-label"><i class="fas fa-moon"></i> Months of Love</div>
+      <div class="stat-number" id="totalMonthsNum">--</div>
+      <div class="stat-label"><i class="fas fa-moon"></i> MONTHS OF LOVE</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number" id="nextAnniversary">--</div>
-      <div class="stat-label"><i class="fas fa-gift"></i> Days to 26 Jan</div>
+      <div class="stat-number" id="nextAnnivNum">--</div>
+      <div class="stat-label"><i class="fas fa-gift"></i> DAYS TO 26 JAN</div>
     </div>
   </div>
 
-  <!-- Profiles with DOB, Age, Zodiac -->
+  <!-- PROFILES -->
   <div class="profiles">
     <div class="profile">
       <div class="avatar">A</div>
-      <h3>Abhi <i class="fas fa-crown" style="font-size: 1rem; color:#FFD966;"></i></h3>
-      <div class="bio">
-        <i class="fas fa-birthday-cake"></i> Born: <strong>11 Nov 2004</strong><br>
-        <span id="abhiAge"></span>
-        <div class="dob-badge"><i class="fas fa-star-of-life"></i> Scorpio ♏</div>
-        <div class="zodiac">passionate · loyal</div>
-      </div>
+      <h3>Abhi <i class="fas fa-crown" style="color:#FFD966;"></i></h3>
+      <div class="bio"><i class="fas fa-birthday-cake"></i> 11 Nov 2004<br><span id="abhiAgeDisplay"></span><br>♏ Scorpio</div>
     </div>
     <div class="profile">
       <div class="avatar">S</div>
-      <h3>Sonam <i class="fas fa-feather-alt" style="font-size: 1rem; color:#FFA5C3;"></i></h3>
-      <div class="bio">
-        <i class="fas fa-birthday-cake"></i> Born: <strong>19 Mar 2004</strong><br>
-        <span id="sonamAge"></span>
-        <div class="dob-badge"><i class="fas fa-water"></i> Pisces ♓</div>
-        <div class="zodiac">dreamy · compassionate</div>
+      <h3>Sonam <i class="fas fa-feather-alt" style="color:#FFA5C3;"></i></h3>
+      <div class="bio"><i class="fas fa-birthday-cake"></i> 19 Mar 2004<br><span id="sonamAgeDisplay"></span><br>♓ Pisces</div>
+    </div>
+  </div>
+
+  <!-- 🌟🌟🌟 LIVE SECTION: SECONDS, BREATHS, HEARTBEATS – NOW STACKED IN COLUMN FOR PERFECT VISIBILITY 🌟🌟🌟 -->
+  <div class="live-cosmic-section">
+    <div class="live-cosmic-title">
+      <i class="fas fa-heartbeat"></i> EVERY BREATH & BEAT SINCE WE MET <i class="fas fa-heartbeat"></i>
+    </div>
+    <div class="live-column-stack">
+      <!-- Seconds Card -->
+      <div class="live-metric-card" id="secondsMetricCard">
+        <div class="big-live-number" id="liveSecondsValue">0</div>
+        <div class="live-metric-label">
+          <i class="far fa-clock"></i> SECONDS UNITED
+        </div>
+      </div>
+      <!-- Breaths Card -->
+      <div class="live-metric-card" id="breathsMetricCard">
+        <div class="big-live-number" id="liveBreathsValue">0</div>
+        <div class="live-metric-label">
+          <i class="fas fa-lungs"></i> BREATHS TOGETHER*
+        </div>
+      </div>
+      <!-- Heartbeats Card -->
+      <div class="live-metric-card" id="heartbeatsMetricCard">
+        <div class="big-live-number" id="liveHeartbeatsValue">0</div>
+        <div class="live-metric-label">
+          <i class="fas fa-heartbeat"></i> HEARTBEATS SYNC
+        </div>
+      </div>
+    </div>
+    <div style="font-size: 0.5rem; text-align: center; margin-top: 10px; color: #e8c2d4;">
+      ✨ *Based on avg 16 breaths/min & 72 bpm since 26 Jan 2023 ✨
+    </div>
+  </div>
+
+  <!-- JOURNEY + WEEKS / YEARS EXTRA -->
+  <div class="journey-card">
+    <h4 style="color:#ffb7cb; font-size:1rem;"><i class="fas fa-map-marked-alt"></i> Our Eternal Journey</h4>
+    <p style="font-size:0.75rem; color:#ffc7da;">Started <strong style="color:#FFD966;">26th January 2023</strong> — Forever</p>
+    <div class="sub-stats">
+      <div class="stat-card" style="flex:1; padding:0.5rem;">
+        <div class="stat-number" id="yearsMonthsTogether">--</div>
+        <div class="stat-label">YEARS & MONTHS</div>
+      </div>
+      <div class="stat-card" style="flex:1; padding:0.5rem;">
+        <div class="stat-number" id="weeksTogetherNum">--</div>
+        <div class="stat-label">WEEKS OF MAGIC</div>
       </div>
     </div>
   </div>
 
-  <!-- Journey timeline + automated extra stats -->
-  <div class="journey">
-    <h4><i class="fas fa-map-marked-alt"></i> Our Journey</h4>
-    <p style="color:#ffcddf; font-size:0.8rem;">Started on <strong class="milestone-date">26th January 2023</strong><br>
-    Healthy, respectful, and unbreakable.</p>
-    <div class="stats-grid" style="margin: 0.6rem 0 0; gap: 0.7rem;">
-      <div class="stat-card" style="padding: 0.5rem 0.6rem;">
-        <div class="stat-number" id="yearsTogether">--</div>
-        <div class="stat-label">Years & Months</div>
-      </div>
-      <div class="stat-card" style="padding: 0.5rem 0.6rem;">
-        <div class="stat-number" id="weeksTogether">--</div>
-        <div class="stat-label">Weeks Together</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Parents & Pledge: Families not agreeing but love wins -->
+  <!-- PLEDGE AREA -->
   <div class="pledge-area">
-    <div class="pledge-text">
-      <i class="fas fa-hand-holding-heart"></i> “We respect our families, but our love is patient & true.” 
-    </div>
-    <p style="color:#ffe0e8; margin-bottom: 0.6rem; font-size: 0.75rem;">Families may not agree right now, but our commitment will melt every heart. Together, we will prove our love is destiny.</p>
-    <div class="btn-group">
+    <div><i class="fas fa-hand-holding-heart"></i> “Families may differ, but our love is patient & destined.”</div>
+    <div style="display: flex; gap: 0.6rem; justify-content: center; margin: 10px 0 5px;">
       <button class="btn" id="promiseBtn"><i class="fas fa-ring"></i> Eternal Promise</button>
-      <button class="btn btn-outline" id="confettiBtn"><i class="fas fa-sparkles"></i> Burst of Joy</button>
+      <button class="btn btn-outline" id="confettiBtn"><i class="fas fa-sparkles"></i> Joy Burst</button>
     </div>
     <div id="dynamicPromiseMsg" class="quote-message" style="display: none;">
-      💖 "No matter what, we will never give up. With time, our families will see our happiness and bless our marriage. Abhi 🤝 Sonam — forever." 💖
+      💖 "No matter the trials, our hearts beat as one. With time, families will see our sacred love. Abhi 🤝 Sonam — forever, eternally." 💖
     </div>
   </div>
-
-  <footer>
-    <i class="fas fa-heartbeat"></i> True love conquers all · Since 26 Jan 2023
-  </footer>
+  <footer><i class="fas fa-heartbeat"></i> LIVE love • Every second counts • Our story evolves</footer>
 </div>
 
-<!-- Download button outside capture area to avoid being captured but still visible -->
-<div style="margin-top: 1rem; text-align: center; z-index: 20; position: relative;">
-  <button class="btn btn-download" id="downloadBtn"><i class="fas fa-download"></i> Download as Image (Portrait)</button>
-  <p style="color:#cfa5c0; font-size: 0.6rem; margin-top: 8px;">⬇️ Tap to save this beautiful memory ⬇️</p>
+<div style="margin-top: 1rem; text-align: center; z-index: 20;">
+  <button class="btn btn-download" id="downloadBtn"><i class="fas fa-download"></i> Save as Portrait (Live Numbers)</button>
+  <p style="font-size: 0.6rem; color: #ccaac0;">⬇️ Tap to save this breathtaking moment ⬇️</p>
 </div>
 
 <script>
-  // === FULLY AUTOMATED DATE CALCULATIONS (no manual overrides needed) ===
-  const START_DATE = new Date(2023, 0, 26); // Jan 26 2023
-  const ABHI_DOB = new Date(2004, 10, 11);   // Nov 11
-  const SONAM_DOB = new Date(2004, 2, 19);    // Mar 19
-
-  // Helper: difference in days (absolute)
-  function getDateDiffInDays(date1, date2) {
-    return Math.floor(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+  // ---------- FIXED LOVE START ----------
+  const START_MOMENT = new Date(2023, 0, 26, 0, 0, 0); // Jan 26 2023 00:00:00
+  const ABHI_BIRTH = new Date(2004, 10, 11);
+  const SONAM_BIRTH = new Date(2004, 2, 19);
+  
+  // Helper functions
+  function getTotalSecondsSinceStart(now) {
+    return Math.floor((now - START_MOMENT) / 1000);
   }
-
-  // Age calculation (accurate)
-  function calculateAge(birthDate, today) {
-    let years = today.getFullYear() - birthDate.getFullYear();
-    let monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      years--;
-    }
-    return years;
+  
+  function getTotalDaysSince(now) {
+    return Math.floor((now - START_MOMENT) / (1000 * 60 * 60 * 24));
   }
-
-  // Get exact years + months since start (for nice display)
-  function getExactYearMonthFromStart(start, end) {
-    let years = end.getFullYear() - start.getFullYear();
-    let months = end.getMonth() - start.getMonth();
-    let days = end.getDate() - start.getDate();
-    if (days < 0) {
-      months--;
-      const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0);
-      days += prevMonth.getDate();
-    }
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-    // if days is negative compensation already done
+  
+  function getTotalMonthsSince(now) {
+    let months = (now.getFullYear() - START_MOMENT.getFullYear()) * 12;
+    months += now.getMonth() - START_MOMENT.getMonth();
+    if (now.getDate() < START_MOMENT.getDate()) months--;
+    return Math.max(0, months);
+  }
+  
+  function getDaysToAnniversary() {
+    const today = new Date();
+    let nextJan26 = new Date(today.getFullYear(), 0, 26);
+    if (today > nextJan26) nextJan26 = new Date(today.getFullYear() + 1, 0, 26);
+    return Math.ceil((nextJan26 - today) / (1000 * 3600 * 24));
+  }
+  
+  function getYearMonthSinceStart(now) {
+    let years = now.getFullYear() - START_MOMENT.getFullYear();
+    let months = now.getMonth() - START_MOMENT.getMonth();
+    let dayDiff = now.getDate() - START_MOMENT.getDate();
+    if (dayDiff < 0) months--;
+    if (months < 0) { years--; months += 12; }
+    if (months < 0) months = 0;
     return { years, months };
   }
-
-  // total months since start (floor)
-  function getTotalMonthsSinceStart(start, end) {
-    let totalMonths = (end.getFullYear() - start.getFullYear()) * 12;
-    totalMonths += end.getMonth() - start.getMonth();
-    // adjust if day of month less than start day
-    if (end.getDate() < start.getDate()) totalMonths--;
-    return Math.max(0, totalMonths);
-  }
-
-  // days until next 26th Jan
-  function getDaysToNextAnniversary() {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    let next = new Date(currentYear, 0, 26);
-    if (now > next) {
-      next = new Date(currentYear + 1, 0, 26);
-    }
-    return Math.ceil((next - now) / (1000 * 3600 * 24));
-  }
-
-  // Main updater: automatically refreshes all stats based on current date/time
-  function updateAllStatsAutomatically() {
-    const now = new Date();  // real-time current moment
-    
-    // Days together since 26 Jan 2023
-    const totalDays = getDateDiffInDays(START_DATE, now);
-    // Months of love (total)
-    const totalMonths = getTotalMonthsSinceStart(START_DATE, now);
-    // Next anniversary countdown
-    const daysToAnniv = getDaysToNextAnniversary();
-    
-    // Years & months formatted
-    const { years, months } = getExactYearMonthFromStart(START_DATE, now);
-    const weeksTogether = Math.floor(totalDays / 7);
-    
-    // Update DOM
-    document.getElementById('totalDays').innerText = totalDays.toLocaleString();
-    document.getElementById('totalMonths').innerText = totalMonths;
-    document.getElementById('nextAnniversary').innerHTML = daysToAnniv;
-    document.getElementById('yearsTogether').innerHTML = `${years} yrs ${months} mos`;
-    document.getElementById('weeksTogether').innerHTML = `${weeksTogether} weeks`;
-    
-    // Ages of Abhi & Sonam
-    const abhiAge = calculateAge(ABHI_DOB, now);
-    const sonamAge = calculateAge(SONAM_DOB, now);
-    document.getElementById('abhiAge').innerHTML = `<i class="fas fa-hourglass-half"></i> ${abhiAge} years old`;
-    document.getElementById('sonamAge').innerHTML = `<i class="fas fa-hourglass-half"></i> ${sonamAge} years old`;
+  
+  function calculateAge(birthDate, today) {
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) age--;
+    return age;
   }
   
-  // auto-update every minute to be super precise (also handles midnight)
-  setInterval(updateAllStatsAutomatically, 60000);
-  // initial call
-  updateAllStatsAutomatically();
-  
-  // === FLOATING HEARTS (romantic ambiance) ===
-  let heartInterval;
-  function startFloatingHearts() {
-    const container = document.getElementById('heartContainer');
-    if (!container) return;
-    if (heartInterval) clearInterval(heartInterval);
-    heartInterval = setInterval(() => {
-      const heart = document.createElement('div');
-      heart.innerHTML = '<i class="fas fa-heart"></i>';
-      heart.style.position = 'absolute';
-      heart.style.bottom = '-20px';
-      heart.style.left = Math.random() * 100 + '%';
-      heart.style.fontSize = (Math.random() * 16 + 10) + 'px';
-      heart.style.color = `rgba(255, ${100 + Math.random() * 100}, ${150 + Math.random() * 50}, 0.6)`;
-      heart.style.pointerEvents = 'none';
-      heart.style.filter = 'drop-shadow(0 0 3px #ff99bb)';
-      heart.style.zIndex = '1';
-      container.appendChild(heart);
-      let pos = -20;
-      const interval = setInterval(() => {
-        pos += 1;
-        heart.style.transform = `translateY(${pos}px) rotate(${pos * 0.4}deg)`;
-        if (pos > window.innerHeight + 60) {
-          clearInterval(interval);
-          if (heart && heart.remove) heart.remove();
-        }
-      }, 25);
+  // Animation helper for live numbers
+  function animateElement(elementId) {
+    const el = document.getElementById(elementId);
+    if (el) {
+      el.classList.add('live-update');
       setTimeout(() => {
-        clearInterval(interval);
-        if (heart && heart.remove) heart.remove();
-      }, 12000);
-    }, 900);
-  }
-  startFloatingHearts();
-  
-  // CONFETTI BLAST (joyful)
-  function shootConfetti() {
-    canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, startVelocity: 16, colors: ['#ff4d6d', '#ff9eb5', '#ffd966', '#ffb3ba'] });
-    canvasConfetti({ particleCount: 40, spread: 45, origin: { y: 0.4, x: 0.3 } });
-    canvasConfetti({ particleCount: 40, spread: 45, origin: { y: 0.4, x: 0.7 } });
-    setTimeout(() => canvasConfetti({ particleCount: 150, spread: 60, origin: { y: 0.8 } }), 150);
+        el.classList.remove('live-update');
+      }, 250);
+    }
   }
   
-  // Promise message toggle
-  let promiseVisible = false;
-  function togglePromise() {
+  // Master updater - all numbers update every second for true live feed
+  function updateAllLiveNumbers() {
+    const now = new Date();
+    const totalSeconds = getTotalSecondsSinceStart(now);
+    const totalDays = getTotalDaysSince(now);
+    const totalMonths = getTotalMonthsSince(now);
+    const daysToAnniversary = getDaysToAnniversary();
+    const weeksTogether = Math.floor(totalDays / 7);
+    const { years, months } = getYearMonthSinceStart(now);
+    
+    // Breath & Heartbeat logic
+    const totalMinutes = totalSeconds / 60;
+    const breathsTogether = Math.floor(totalMinutes * 16);   // avg 16 breaths per minute
+    const heartbeatsTogether = Math.floor(totalMinutes * 72); // avg 72 bpm
+    
+    // Update DAYS
+    const daysSpan = document.getElementById('totalDaysNum');
+    if (daysSpan && daysSpan.innerText != totalDays.toLocaleString()) {
+      daysSpan.innerText = totalDays.toLocaleString();
+      animateElement('totalDaysNum');
+    }
+    // MONTHS
+    const monthsSpan = document.getElementById('totalMonthsNum');
+    if (monthsSpan && monthsSpan.innerText != totalMonths.toLocaleString()) {
+      monthsSpan.innerText = totalMonths.toLocaleString();
+      animateElement('totalMonthsNum');
+    }
+    // ANNIVERSARY COUNTDOWN
+    const annivSpan = document.getElementById('nextAnnivNum');
+    if (annivSpan && annivSpan.innerText != daysToAnniversary) {
+      annivSpan.innerText = daysToAnniversary;
+      animateElement('nextAnnivNum');
+    }
+    // YEARS & MONTHS together
+    const yearMonthSpan = document.getElementById('yearsMonthsTogether');
+    if (yearMonthSpan) {
+      const newYrMo = `${years} yrs ${months} mos`;
+      if (yearMonthSpan.innerText != newYrMo) {
+        yearMonthSpan.innerText = newYrMo;
+        animateElement('yearsMonthsTogether');
+      }
+    }
+    // WEEKS
+    const weeksSpan = document.getElementById('weeksTogetherNum');
+    if (weeksSpan && weeksSpan.innerText != weeksTogether.toLocaleString()) {
+      weeksSpan.innerText = weeksTogether.toLocaleString();
+      animateElement('weeksTogetherNum');
+    }
+    
+    // ********** LIVE SECONDS **********
+    const secondsSpan = document.getElementById('liveSecondsValue');
+    if (secondsSpan && secondsSpan.innerText != totalSeconds.toLocaleString()) {
+      secondsSpan.innerText = totalSeconds.toLocaleString();
+      animateElement('liveSecondsValue');
+    }
+    
+    // ********** LIVE BREATHS **********
+    const breathsSpan = document.getElementById('liveBreathsValue');
+    if (breathsSpan && breathsSpan.innerText != breathsTogether.toLocaleString()) {
+      breathsSpan.innerText = breathsTogether.toLocaleString();
+      animateElement('liveBreathsValue');
+    }
+    
+    // ********** LIVE HEARTBEATS **********
+    const heartSpan = document.getElementById('liveHeartbeatsValue');
+    if (heartSpan && heartSpan.innerText != heartbeatsTogether.toLocaleString()) {
+      heartSpan.innerText = heartbeatsTogether.toLocaleString();
+      animateElement('liveHeartbeatsValue');
+    }
+    
+    // Ages
+    const abhiAge = calculateAge(ABHI_BIRTH, now);
+    const sonamAge = calculateAge(SONAM_BIRTH, now);
+    const abhiSpan = document.getElementById('abhiAgeDisplay');
+    if (abhiSpan) abhiSpan.innerHTML = `<i class="fas fa-hourglass-half"></i> ${abhiAge} years`;
+    const sonamSpan = document.getElementById('sonamAgeDisplay');
+    if (sonamSpan) sonamSpan.innerHTML = `<i class="fas fa-hourglass-half"></i> ${sonamAge} years`;
+    
+    // Live date
+    const dateSpan = document.getElementById('liveDateToday');
+    if (dateSpan) {
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
+      dateSpan.innerText = now.toLocaleDateString(undefined, options);
+    }
+  }
+  
+  // Update every second for real-time seconds, breaths, heartbeats
+  setInterval(() => {
+    updateAllLiveNumbers();
+  }, 1000);
+  
+  // Initial call
+  updateAllLiveNumbers();
+  
+  // ========== FLOATING HEARTS BACKGROUND ==========
+  function createFloatingHearts() {
+    const container = document.getElementById('floatingHearts');
+    if (!container) return;
+    const icons = ['❤️', '💖', '🌸', '✨', '💗', '🌹', '💘'];
+    for (let i = 0; i < 55; i++) {
+      const heartDiv = document.createElement('div');
+      heartDiv.style.position = 'absolute';
+      heartDiv.style.left = Math.random() * 100 + '%';
+      heartDiv.style.animationDuration = 8 + Math.random() * 16 + 's';
+      heartDiv.style.animationDelay = Math.random() * 18 + 's';
+      heartDiv.style.fontSize = 12 + Math.random() * 28 + 'px';
+      heartDiv.style.opacity = 0.3 + Math.random() * 0.55;
+      heartDiv.style.color = `rgba(255, ${120 + Math.random() * 100}, ${150 + Math.random() * 80}, 0.75)`;
+      heartDiv.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+      heartDiv.style.pointerEvents = 'none';
+      heartDiv.style.filter = 'drop-shadow(0 0 4px #ff99bb)';
+      heartDiv.style.animation = 'floatHeart 14s linear infinite';
+      container.appendChild(heartDiv);
+    }
+  }
+  createFloatingHearts();
+  
+  // CONFETTI joy
+  function fireConfettiRomance() {
+    canvasConfetti({ particleCount: 160, spread: 75, origin: { y: 0.65 }, startVelocity: 18, colors: ['#ff4d6d', '#ff9eb5', '#ffd966', '#ffb3ba', '#ff85a8'] });
+    canvasConfetti({ particleCount: 80, spread: 50, origin: { y: 0.4, x: 0.2 } });
+    canvasConfetti({ particleCount: 80, spread: 50, origin: { y: 0.4, x: 0.8 } });
+    setTimeout(() => canvasConfetti({ particleCount: 140, spread: 65, origin: { y: 0.8 } }), 150);
+  }
+  
+  // Promise toggle message
+  let promiseActive = false;
+  function togglePromiseMessage() {
     const msgDiv = document.getElementById('dynamicPromiseMsg');
     if (!msgDiv) return;
-    if (promiseVisible) {
+    if (promiseActive) {
       msgDiv.style.display = 'none';
-      promiseVisible = false;
+      promiseActive = false;
     } else {
       msgDiv.style.display = 'block';
-      promiseVisible = true;
-      canvasConfetti({ particleCount: 70, spread: 50, origin: { y: 0.7 }, colors: ['#ff99bb', '#ffd966'] });
+      promiseActive = true;
+      canvasConfetti({ particleCount: 90, spread: 55, origin: { y: 0.7 }, colors: ['#ffa5c0', '#ffdab9'] });
+      showToast('💍 Eternal vow sealed with love 💍');
     }
   }
   
-  // ========== IMAGE DOWNLOAD FUNCTION (Phone portrait optimized) ==========
-  async function downloadCardAsImage() {
-    const element = document.getElementById('captureArea');
-    if (!element) return;
-    
-    // Show loading toast
+  function showToast(msg, duration = 1800) {
     const toast = document.createElement('div');
     toast.className = 'toast-msg';
-    toast.innerText = '✨ Generating your love memory image... ✨';
+    toast.innerText = msg;
     document.body.appendChild(toast);
-    
+    setTimeout(() => toast.remove(), duration);
+  }
+  
+  // Download card as image
+  async function downloadLoveCardImage() {
+    const element = document.getElementById('captureArea');
+    if (!element) return;
+    showToast('💖 Capturing your live love story... 💖', 1500);
     try {
-      // Use html2canvas with high quality & exact dimensions
       const canvas = await html2canvas(element, {
-        scale: 2.5,               // high resolution for phone screens
+        scale: 2.6,
         backgroundColor: null,
         useCORS: false,
         logging: false,
         windowWidth: element.scrollWidth,
         windowHeight: element.scrollHeight
       });
-      
-      // Create download link
       const link = document.createElement('a');
-      const dateNow = new Date();
-      const formattedDate = `${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()}`;
-      link.download = `Abhi_Sonam_Love_${formattedDate}.png`;
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+      link.download = `Abhi_Sonam_LiveLove_${timestamp}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
-      
-      // Update toast to success
-      toast.innerText = '❤️ Image saved! Check your downloads ❤️';
-      setTimeout(() => toast.remove(), 2000);
-      
-      // small confetti celebration on download
-      canvasConfetti({ particleCount: 60, spread: 45, origin: { y: 0.8 } });
+      showToast('✨ Love memory saved! ✨', 1800);
+      fireConfettiRomance();
     } catch (err) {
-      console.error("Screenshot error: ", err);
-      toast.innerText = '❌ Retry again, please.';
-      setTimeout(() => toast.remove(), 1500);
+      showToast('❌ Please try again', 1500);
     }
   }
   
-  // ========== EVENT LISTENERS ==========
+  // Event Listeners
   document.addEventListener('DOMContentLoaded', () => {
-    // Buttons
     const promiseBtn = document.getElementById('promiseBtn');
-    if (promiseBtn) promiseBtn.addEventListener('click', togglePromise);
-    
+    if (promiseBtn) promiseBtn.addEventListener('click', togglePromiseMessage);
     const confettiBtn = document.getElementById('confettiBtn');
-    if (confettiBtn) {
-      confettiBtn.addEventListener('click', () => {
-        shootConfetti();
-        const tempMsg = document.createElement('div');
-        tempMsg.className = 'toast-msg';
-        tempMsg.innerText = '🎉 Love fills the air! 🎉';
-        document.body.appendChild(tempMsg);
-        setTimeout(() => tempMsg.remove(), 1500);
-      });
-    }
-    
-    // Download button functionality
-    const downloadBtn = document.getElementById('downloadBtn');
-    if (downloadBtn) downloadBtn.addEventListener('click', downloadCardAsImage);
-    
-    // extra hover effect for profiles
-    const profiles = document.querySelectorAll('.profile');
-    profiles.forEach(p => {
-      p.addEventListener('mouseenter', () => p.style.transform = 'scale(1.01)');
-      p.addEventListener('mouseleave', () => p.style.transform = 'scale(1)');
+    if (confettiBtn) confettiBtn.addEventListener('click', () => {
+      fireConfettiRomance();
+      showToast('🎇 Love exploding like stars! 🎇', 1200);
     });
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) downloadBtn.addEventListener('click', downloadLoveCardImage);
     
-    // initial small welcome confetti
+    // initial celebratory effect
     setTimeout(() => {
-      canvasConfetti({ particleCount: 60, spread: 45, origin: { y: 0.7 }, colors: ['#ff6680', '#ffb347'] });
-    }, 600);
-    
-    // manual refresh of stats on visibility change
-    window.addEventListener('focus', () => updateAllStatsAutomatically());
+      fireConfettiRomance();
+    }, 500);
   });
   
-  // Cleanup heart interval on page unload
-  window.addEventListener('beforeunload', () => {
-    if (heartInterval) clearInterval(heartInterval);
-  });
-  
-  // also ensure automated stats re-run on any orientation change
-  window.addEventListener('resize', () => updateAllStatsAutomatically());
+  window.addEventListener('focus', () => updateAllLiveNumbers());
 </script>
 </body>
 </html>
