@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Abhi ❤️ Sonam | Eternal Love Story - Phone Portrait</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- html2canvas for image download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <!-- canvas-confetti for celebratory effects -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 10% 20%, #1e0b2c, #0e0517);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* floating hearts background */
+    .heart-floating {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* main card container - perfect for phone portrait */
+    .love-card {
+      position: relative;
+      z-index: 10;
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(20, 10, 35, 0.75);
+      backdrop-filter: blur(16px);
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 140, 170, 0.3);
+      padding: 1.5rem 1.2rem 2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 140, 170, 0.4);
+    }
+
+    /* header romantic glow */
+    .couple-title {
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .glow-text {
+      font-size: 2.2rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFB7C5, #FF6A88, #FFD966);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 8px rgba(255, 105, 130, 0.4);
+      letter-spacing: 1px;
+    }
+
+    .heart-divider {
+      font-size: 1.4rem;
+      margin: 0.2rem 0;
+      color: #ff7b9c;
+    }
+
+    .subhead {
+      font-size: 0.75rem;
+      color: #f8c8dc;
+      background: rgba(255, 255, 255, 0.08);
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* stats grid - compact for mobile */
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      margin: 1.2rem 0;
+    }
+
+    .stat-card {
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 1.2rem;
+      padding: 0.7rem 0.8rem;
+      min-width: 100px;
+      flex: 1;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 130, 160, 0.5);
+    }
+
+    .stat-number {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffb3c6;
+      font-family: monospace;
+      letter-spacing: 1px;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: #ffcfdf;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* double profile section - column for mobile but side by side if space */
+    .profiles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.2rem 0;
+    }
+
+    .profile {
+      flex: 1;
+      min-width: 140px;
+      background: rgba(15, 8, 25, 0.7);
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid rgba(255, 120, 150, 0.4);
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(145deg, #ff708d, #d43f68);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.6rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      border: 2px solid #ffc0d0;
+    }
+
+    .profile h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffd9e4;
+    }
+
+    .bio {
+      margin-top: 0.4rem;
+      font-size: 0.7rem;
+      color: #e7bfd0;
+    }
+
+    .dob-badge {
+      background: rgba(255, 80, 110, 0.25);
+      border-radius: 30px;
+      padding: 3px 10px;
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.7rem;
+    }
+
+    .zodiac {
+      margin-top: 5px;
+      font-size: 0.65rem;
+      font-style: italic;
+    }
+
+    /* journey timeline */
+    .journey {
+      margin: 1.2rem 0;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .journey h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffb3c9;
+      margin-bottom: 0.3rem;
+    }
+
+    .milestone-date {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #FFD966;
+    }
+
+    .pledge-area {
+      background: rgba(255, 80, 110, 0.12);
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 1rem;
+      border: 1px dashed #ff99b5;
+    }
+
+    .pledge-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffe0e8;
+      margin-bottom: 0.6rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin: 0.8rem 0;
+    }
+
+    .btn {
+      background: linear-gradient(95deg, #ff4d6d, #b91c44);
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s;
+      font-family: inherit;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #ff7b9c;
+      color: #ffb7c5;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: #ff4d6d30;
+    }
+
+    .btn:hover {
+      transform: scale(1.02);
+    }
+
+    /* download button special */
+    .btn-download {
+      background: linear-gradient(95deg, #3a86ff, #1a4972);
+      border: none;
+      margin-top: 0.5rem;
+    }
+
+    .quote-message {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      background: #1f132b;
+      padding: 10px;
+      border-radius: 20px;
+      color: #ffcddf;
+    }
+
+    footer {
+      margin-top: 1.2rem;
+      text-align: center;
+      font-size: 0.6rem;
+      color: #ac88a0;
+      border-top: 1px solid rgba(255, 120, 150, 0.3);
+      padding-top: 12px;
+    }
+
+    i {
+      margin-right: 4px;
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .love-card > * {
+      animation: fadeSlide 0.4s ease-out forwards;
+    }
+
+    /* download notification toast */
+    .toast-msg {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2d1b36e6;
+      backdrop-filter: blur(12px);
+      color: #ffd9e4;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      z-index: 1000;
+      border: 1px solid #ff99bb;
+      font-weight: 500;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="heart-floating" id="heartContainer"></div>
+
+<!-- main card wrapper for screenshot -->
+<div id="captureArea" class="love-card">
+  <div class="couple-title">
+    <div class="glow-text">ABHI ✦ SONAM</div>
+    <div class="heart-divider">
+      <i class="fas fa-heart"></i> <i class="fas fa-infinity"></i> <i class="fas fa-heart"></i>
+    </div>
+    <div class="subhead">
+      <i class="fas fa-calendar-alt"></i> 26th January 2023 — Forever & Beyond
+    </div>
+  </div>
+
+  <!-- Dynamic Stats: FULLY AUTOMATED via JS (days, months, anniversary) -->
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card">
+      <div class="stat-number" id="totalDays">--</div>
+      <div class="stat-label"><i class="fas fa-clock"></i> Days Together</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="totalMonths">--</div>
+      <div class="stat-label"><i class="fas fa-moon"></i> Months of Love</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="nextAnniversary">--</div>
+      <div class="stat-label"><i class="fas fa-gift"></i> Days to 26 Jan</div>
+    </div>
+  </div>
+
+  <!-- Profiles with DOB, Age, Zodiac -->
+  <div class="profiles">
+    <div class="profile">
+      <div class="avatar">A</div>
+      <h3>Abhi <i class="fas fa-crown" style="font-size: 1rem; color:#FFD966;"></i></h3>
+      <div class="bio">
+        <i class="fas fa-birthday-cake"></i> Born: <strong>11 Nov 2004</strong><br>
+        <span id="abhiAge"></span>
+        <div class="dob-badge"><i class="fas fa-star-of-life"></i> Scorpio ♏</div>
+        <div class="zodiac">passionate · loyal</div>
+      </div>
+    </div>
+    <div class="profile">
+      <div class="avatar">S</div>
+      <h3>Sonam <i class="fas fa-feather-alt" style="font-size: 1rem; color:#FFA5C3;"></i></h3>
+      <div class="bio">
+        <i class="fas fa-birthday-cake"></i> Born: <strong>19 Mar 2004</strong><br>
+        <span id="sonamAge"></span>
+        <div class="dob-badge"><i class="fas fa-water"></i> Pisces ♓</div>
+        <div class="zodiac">dreamy · compassionate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Journey timeline + automated extra stats -->
+  <div class="journey">
+    <h4><i class="fas fa-map-marked-alt"></i> Our Journey</h4>
+    <p style="color:#ffcddf; font-size:0.8rem;">Started on <strong class="milestone-date">26th January 2023</strong><br>
+    Healthy, respectful, and unbreakable.</p>
+    <div class="stats-grid" style="margin: 0.6rem 0 0; gap: 0.7rem;">
+      <div class="stat-card" style="padding: 0.5rem 0.6rem;">
+        <div class="stat-number" id="yearsTogether">--</div>
+        <div class="stat-label">Years & Months</div>
+      </div>
+      <div class="stat-card" style="padding: 0.5rem 0.6rem;">
+        <div class="stat-number" id="weeksTogether">--</div>
+        <div class="stat-label">Weeks Together</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parents & Pledge: Families not agreeing but love wins -->
+  <div class="pledge-area">
+    <div class="pledge-text">
+      <i class="fas fa-hand-holding-heart"></i> “We respect our families, but our love is patient & true.” 
+    </div>
+    <p style="color:#ffe0e8; margin-bottom: 0.6rem; font-size: 0.75rem;">Families may not agree right now, but our commitment will melt every heart. Together, we will prove our love is destiny.</p>
+    <div class="btn-group">
+      <button class="btn" id="promiseBtn"><i class="fas fa-ring"></i> Eternal Promise</button>
+      <button class="btn btn-outline" id="confettiBtn"><i class="fas fa-sparkles"></i> Burst of Joy</button>
+    </div>
+    <div id="dynamicPromiseMsg" class="quote-message" style="display: none;">
+      💖 "No matter what, we will never give up. With time, our families will see our happiness and bless our marriage. Abhi 🤝 Sonam — forever." 💖
+    </div>
+  </div>
+
+  <footer>
+    <i class="fas fa-heartbeat"></i> True love conquers all · Since 26 Jan 2023
+  </footer>
+</div>
+
+<!-- Download button outside capture area to avoid being captured but still visible -->
+<div style="margin-top: 1rem; text-align: center; z-index: 20; position: relative;">
+  <button class="btn btn-download" id="downloadBtn"><i class="fas fa-download"></i> Download as Image (Portrait)</button>
+  <p style="color:#cfa5c0; font-size: 0.6rem; margin-top: 8px;">⬇️ Tap to save this beautiful memory ⬇️</p>
+</div>
+
+<script>
+  // === FULLY AUTOMATED DATE CALCULATIONS (no manual overrides needed) ===
+  const START_DATE = new Date(2023, 0, 26); // Jan 26 2023
+  const ABHI_DOB = new Date(2004, 10, 11);   // Nov 11
+  const SONAM_DOB = new Date(2004, 2, 19);    // Mar 19
+
+  // Helper: difference in days (absolute)
+  function getDateDiffInDays(date1, date2) {
+    return Math.floor(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+  }
+
+  // Age calculation (accurate)
+  function calculateAge(birthDate, today) {
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      years--;
+    }
+    return years;
+  }
+
+  // Get exact years + months since start (for nice display)
+  function getExactYearMonthFromStart(start, end) {
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+    let days = end.getDate() - start.getDate();
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    // if days is negative compensation already done
+    return { years, months };
+  }
+
+  // total months since start (floor)
+  function getTotalMonthsSinceStart(start, end) {
+    let totalMonths = (end.getFullYear() - start.getFullYear()) * 12;
+    totalMonths += end.getMonth() - start.getMonth();
+    // adjust if day of month less than start day
+    if (end.getDate() < start.getDate()) totalMonths--;
+    return Math.max(0, totalMonths);
+  }
+
+  // days until next 26th Jan
+  function getDaysToNextAnniversary() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    let next = new Date(currentYear, 0, 26);
+    if (now > next) {
+      next = new Date(currentYear + 1, 0, 26);
+    }
+    return Math.ceil((next - now) / (1000 * 3600 * 24));
+  }
+
+  // Main updater: automatically refreshes all stats based on current date/time
+  function updateAllStatsAutomatically() {
+    const now = new Date();  // real-time current moment
+    
+    // Days together since 26 Jan 2023
+    const totalDays = getDateDiffInDays(START_DATE, now);
+    // Months of love (total)
+    const totalMonths = getTotalMonthsSinceStart(START_DATE, now);
+    // Next anniversary countdown
+    const daysToAnniv = getDaysToNextAnniversary();
+    
+    // Years & months formatted
+    const { years, months } = getExactYearMonthFromStart(START_DATE, now);
+    const weeksTogether = Math.floor(totalDays / 7);
+    
+    // Update DOM
+    document.getElementById('totalDays').innerText = totalDays.toLocaleString();
+    document.getElementById('totalMonths').innerText = totalMonths;
+    document.getElementById('nextAnniversary').innerHTML = daysToAnniv;
+    document.getElementById('yearsTogether').innerHTML = `${years} yrs ${months} mos`;
+    document.getElementById('weeksTogether').innerHTML = `${weeksTogether} weeks`;
+    
+    // Ages of Abhi & Sonam
+    const abhiAge = calculateAge(ABHI_DOB, now);
+    const sonamAge = calculateAge(SONAM_DOB, now);
+    document.getElementById('abhiAge').innerHTML = `<i class="fas fa-hourglass-half"></i> ${abhiAge} years old`;
+    document.getElementById('sonamAge').innerHTML = `<i class="fas fa-hourglass-half"></i> ${sonamAge} years old`;
+  }
+  
+  // auto-update every minute to be super precise (also handles midnight)
+  setInterval(updateAllStatsAutomatically, 60000);
+  // initial call
+  updateAllStatsAutomatically();
+  
+  // === FLOATING HEARTS (romantic ambiance) ===
+  let heartInterval;
+  function startFloatingHearts() {
+    const container = document.getElementById('heartContainer');
+    if (!container) return;
+    if (heartInterval) clearInterval(heartInterval);
+    heartInterval = setInterval(() => {
+      const heart = document.createElement('div');
+      heart.innerHTML = '<i class="fas fa-heart"></i>';
+      heart.style.position = 'absolute';
+      heart.style.bottom = '-20px';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (Math.random() * 16 + 10) + 'px';
+      heart.style.color = `rgba(255, ${100 + Math.random() * 100}, ${150 + Math.random() * 50}, 0.6)`;
+      heart.style.pointerEvents = 'none';
+      heart.style.filter = 'drop-shadow(0 0 3px #ff99bb)';
+      heart.style.zIndex = '1';
+      container.appendChild(heart);
+      let pos = -20;
+      const interval = setInterval(() => {
+        pos += 1;
+        heart.style.transform = `translateY(${pos}px) rotate(${pos * 0.4}deg)`;
+        if (pos > window.innerHeight + 60) {
+          clearInterval(interval);
+          if (heart && heart.remove) heart.remove();
+        }
+      }, 25);
+      setTimeout(() => {
+        clearInterval(interval);
+        if (heart && heart.remove) heart.remove();
+      }, 12000);
+    }, 900);
+  }
+  startFloatingHearts();
+  
+  // CONFETTI BLAST (joyful)
+  function shootConfetti() {
+    canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, startVelocity: 16, colors: ['#ff4d6d', '#ff9eb5', '#ffd966', '#ffb3ba'] });
+    canvasConfetti({ particleCount: 40, spread: 45, origin: { y: 0.4, x: 0.3 } });
+    canvasConfetti({ particleCount: 40, spread: 45, origin: { y: 0.4, x: 0.7 } });
+    setTimeout(() => canvasConfetti({ particleCount: 150, spread: 60, origin: { y: 0.8 } }), 150);
+  }
+  
+  // Promise message toggle
+  let promiseVisible = false;
+  function togglePromise() {
+    const msgDiv = document.getElementById('dynamicPromiseMsg');
+    if (!msgDiv) return;
+    if (promiseVisible) {
+      msgDiv.style.display = 'none';
+      promiseVisible = false;
+    } else {
+      msgDiv.style.display = 'block';
+      promiseVisible = true;
+      canvasConfetti({ particleCount: 70, spread: 50, origin: { y: 0.7 }, colors: ['#ff99bb', '#ffd966'] });
+    }
+  }
+  
+  // ========== IMAGE DOWNLOAD FUNCTION (Phone portrait optimized) ==========
+  async function downloadCardAsImage() {
+    const element = document.getElementById('captureArea');
+    if (!element) return;
+    
+    // Show loading toast
+    const toast = document.createElement('div');
+    toast.className = 'toast-msg';
+    toast.innerText = '✨ Generating your love memory image... ✨';
+    document.body.appendChild(toast);
+    
+    try {
+      // Use html2canvas with high quality & exact dimensions
+      const canvas = await html2canvas(element, {
+        scale: 2.5,               // high resolution for phone screens
+        backgroundColor: null,
+        useCORS: false,
+        logging: false,
+        windowWidth: element.scrollWidth,
+        windowHeight: element.scrollHeight
+      });
+      
+      // Create download link
+      const link = document.createElement('a');
+      const dateNow = new Date();
+      const formattedDate = `${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()}`;
+      link.download = `Abhi_Sonam_Love_${formattedDate}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      
+      // Update toast to success
+      toast.innerText = '❤️ Image saved! Check your downloads ❤️';
+      setTimeout(() => toast.remove(), 2000);
+      
+      // small confetti celebration on download
+      canvasConfetti({ particleCount: 60, spread: 45, origin: { y: 0.8 } });
+    } catch (err) {
+      console.error("Screenshot error: ", err);
+      toast.innerText = '❌ Retry again, please.';
+      setTimeout(() => toast.remove(), 1500);
+    }
+  }
+  
+  // ========== EVENT LISTENERS ==========
+  document.addEventListener('DOMContentLoaded', () => {
+    // Buttons
+    const promiseBtn = document.getElementById('promiseBtn');
+    if (promiseBtn) promiseBtn.addEventListener('click', togglePromise);
+    
+    const confettiBtn = document.getElementById('confettiBtn');
+    if (confettiBtn) {
+      confettiBtn.addEventListener('click', () => {
+        shootConfetti();
+        const tempMsg = document.createElement('div');
+        tempMsg.className = 'toast-msg';
+        tempMsg.innerText = '🎉 Love fills the air! 🎉';
+        document.body.appendChild(tempMsg);
+        setTimeout(() => tempMsg.remove(), 1500);
+      });
+    }
+    
+    // Download button functionality
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) downloadBtn.addEventListener('click', downloadCardAsImage);
+    
+    // extra hover effect for profiles
+    const profiles = document.querySelectorAll('.profile');
+    profiles.forEach(p => {
+      p.addEventListener('mouseenter', () => p.style.transform = 'scale(1.01)');
+      p.addEventListener('mouseleave', () => p.style.transform = 'scale(1)');
+    });
+    
+    // initial small welcome confetti
+    setTimeout(() => {
+      canvasConfetti({ particleCount: 60, spread: 45, origin: { y: 0.7 }, colors: ['#ff6680', '#ffb347'] });
+    }, 600);
+    
+    // manual refresh of stats on visibility change
+    window.addEventListener('focus', () => updateAllStatsAutomatically());
+  });
+  
+  // Cleanup heart interval on page unload
+  window.addEventListener('beforeunload', () => {
+    if (heartInterval) clearInterval(heartInterval);
+  });
+  
+  // also ensure automated stats re-run on any orientation change
+  window.addEventListener('resize', () => updateAllStatsAutomatically());
+</script>
+</body>
+</html>
